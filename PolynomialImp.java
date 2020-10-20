@@ -5,6 +5,7 @@ public class PolynomialImp implements Polynomial{
     private double coefficient;
     private int exponent;
     private String polynomial;
+    private List<Term> listTerms;
     private static final double EPSILON = 0.0001;
 
     public PolynomialImp(String polynomial){
@@ -12,11 +13,12 @@ public class PolynomialImp implements Polynomial{
             throw new IllegalArgumentException("Must input a valid polynomial");
         }
         this.polynomial = polynomial;
+        this.listTerms = this.polynomialToTerm();
     }
 
     @Override
     public Polynomial add(Polynomial P2) {
-        List<Term> p1 = this.polynomialToTerm();
+        List<Term> p1 = this.listTerms;
         List<Term> p2 = P2.polynomialToTerm();
         List<Term> p3 = new ArrayList<>();
         int i = 0;
@@ -61,7 +63,7 @@ public class PolynomialImp implements Polynomial{
 
     @Override
     public Polynomial multiply(Polynomial P2) {
-        List<Term> p1 = this.polynomialToTerm();
+        List<Term> p1 = this.listTerms;
         List<Term> p2 = P2.polynomialToTerm();
         Polynomial Pol1 = new PolynomialImp("");
 
@@ -93,7 +95,7 @@ public class PolynomialImp implements Polynomial{
 
     @Override
     public Polynomial derivative() {
-        List<Term> termList = this.polynomialToTerm();
+        List<Term> termList = this.listTerms;
         List<Term> newTerms = new ArrayList<Term>();
         for (int i = 0; i < termList.size(); i++) {
             double coeff = termList.get(i).getCoefficient();
@@ -115,7 +117,7 @@ public class PolynomialImp implements Polynomial{
 
     @Override
     public Polynomial indefiniteIntegral() {
-        List<Term> termList = this.polynomialToTerm();
+        List<Term> termList = this.listTerms;
         List<Term> newTerms = new ArrayList<Term>();
         for (int i = 0; i < termList.size(); i++) {
             double coeff = termList.get(i).getCoefficient();
@@ -152,13 +154,13 @@ public class PolynomialImp implements Polynomial{
 //            }
 //        }
 //        return max;
-        return this.polynomialToTerm().get(0).getExponent();
+        return this.listTerms.get(0).getExponent();
     }
 
     @Override
     public double evaluate(double x) {
         double total = 0.00;
-        List<Term> termList = this.polynomialToTerm();
+        List<Term> termList = this.listTerms;
         for (int i = 0; i < termList.size(); i++) {
             total += termList.get(i).evaluate(x);
         }
@@ -218,7 +220,7 @@ public class PolynomialImp implements Polynomial{
             throw new IllegalArgumentException("Obj must be a Polynomial");
         }
         Polynomial temp = (PolynomialImp)obj;
-        List<Term> p1 = this.polynomialToTerm();
+        List<Term> p1 = this.listTerms;
         List<Term> p2 = temp.polynomialToTerm();
         if(p1.size()==p2.size()) {
             for (int i = 0; i < p1.size(); i++) {
@@ -266,7 +268,7 @@ public class PolynomialImp implements Polynomial{
 
     @Override
     public Iterator<Term> iterator() {
-        return this.polynomialToTerm().iterator();
+        return this.listTerms.iterator();
     }
 
     public Polynomial termsToPolynomial(List<Term> termList){//turns list of terms into polynomials
