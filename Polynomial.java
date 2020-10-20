@@ -19,8 +19,11 @@ public interface Polynomial extends Iterable<Term> {
 	public int degree();
 	
 	public double evaluate(double x);
-	
 
-	
+	public String toString();
+
+	public boolean equals(Object obj);
+
+	public List<Term> polynomialToTerm();
 
 }
