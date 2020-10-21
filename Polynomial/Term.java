@@ -1,3 +1,5 @@
+package Polynomial;
+
 public interface Term {
 	
 	public double getCoefficient();

@@ -1,4 +1,6 @@
-import java.util.Iterator;
+package Polynomial;
+
+import edu.uprm.cse.list.List;
 
 public interface Polynomial extends Iterable<Term> {
 	
@@ -25,5 +27,7 @@ public interface Polynomial extends Iterable<Term> {
 	public boolean equals(Object obj);
 
 	public List<Term> polynomialToTerm();
+
+	public List<Term> getListTerms();
 
 }

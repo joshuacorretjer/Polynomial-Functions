@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import Polynomial.Polynomial;
+import Polynomial.PolynomialImp;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -65,12 +67,7 @@ public class Test1 {
 	@Test
 	public void testDefiniteIntegral() {
 		double number1 = P1.definiteIntegral(2, 4);
-		System.out.println(P1);
-		System.out.println(P1.indefiniteIntegral());
-		System.out.println(P1.indefiniteIntegral().evaluate(4));
-		System.out.println(P1.indefiniteIntegral().evaluate(2));
 		double number2 = 151.333333;
-		System.out.println(number1-number2);
 		System.out.printf("Definite Integral-> number1: %f, number2: %f\n", number1, number2);
 		double delta = number1 - number2;
 		assertTrue(delta < EPSILON);

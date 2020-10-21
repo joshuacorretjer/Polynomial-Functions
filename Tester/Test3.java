@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import Polynomial.Polynomial;
+import Polynomial.PolynomialImp;
 import org.junit.Before;
 import org.junit.Test;
 
